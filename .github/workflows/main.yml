@@ -2,7 +2,7 @@ name: CI/CD Pipeline with Terraform Auto Provisioning
 on:
   push:
     branches:
-      - dev
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -10,7 +10,7 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
       with:
-        ref: dev
+        ref: main
     # Step 1: Install Terraform
     - name: Install Terraform
       uses: hashicorp/setup-terraform@v2
