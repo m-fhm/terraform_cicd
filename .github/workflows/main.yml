@@ -31,4 +31,5 @@ jobs:
 
     # Step 4: Terraform Plan
     - name: Terraform Plan
+    
       run: terraform plan
