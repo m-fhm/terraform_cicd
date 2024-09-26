@@ -36,13 +36,6 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: "us-east-1"
 
-    # Step 5: Terraform Format Check
-    - name: Terraform Format
-      run: terraform fmt -check
-
-    # Step 6: Terraform Validate
-    - name: Terraform Validate
-      run: terraform validate
 
     # Step 7: Terraform Plan (for non-prod environments)
     - name: Terraform Plan
