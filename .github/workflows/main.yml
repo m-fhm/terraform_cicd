@@ -15,7 +15,7 @@ jobs:
 
     # Step 1: Install Terraform
     - name: Install Terraform
-      uses: hashicorp/setup-terraform@v4
+      uses: hashicorp/setup-terraform@v3
       with:
         terraform_version: 1.5.3
 
