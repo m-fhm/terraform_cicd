@@ -4,46 +4,12 @@ on:
   push:
     branches:
       - main  
-    inputs:
-      project-id:
-        required: true
-        type: string
-      environment:
-        required: true
-        type: string
-      cluster-name:
-        required: true
-        type: string
-      region:
-        required: true
-        type: string
-
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo "${{ inputs.project-id }}"
-          echo "${{ inputs.environment }}"
-          echo "${{ inputs.cluster-name }}"
-          echo "${{ inputs.region }}"
-  
-  test-env:
-    runs-on: ubuntu-latest
-    environment:
-      name: other
-    steps:
-      - run: |
-          echo "${{ vars.PROJECT_ID }}"
-          echo "${{ vars.CLUSTER_NAME }}"
-          echo "${{ vars.REGION }}"
-
-  test-dynamic-env:
-    runs-on: ubuntu-latest
-    environment:
-      name: ${{ inputs.environment }}
-    steps:
-      - run: |
-          echo "${{ vars.PROJECT_ID }}"
-          echo "${{ vars.CLUSTER_NAME }}"
-          echo "${{ vars.REGION }}"
+  - name: generate secret
+    id: generate-secret
+    shell: bash
+    run: |
+      GENERATED_SECRET=$((RANDOM))
+      echo "::add-mask::$GENERATED_SECRET"
+      SECRET_HANDLE=$(secret-store store-secret "$GENERATED_SECRET")
+      echo "handle=$SECRET_HANDLE" >> "$GITHUB_OUTPUT"
