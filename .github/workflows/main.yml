@@ -7,9 +7,7 @@ jobs:
       handle: ${{ steps.generate-secret.outputs.handle }}
     steps:
     - uses: some/secret-store@27b31702a0e7fc50959f5ad993c78deac1bdfc29
-      with:
-        credentials: ${{ secrets.SECRET_STORE_CREDENTIALS }}
-        instance: ${{ secrets.SECRET_STORE_INSTANCE }}
+   
     - name: generate secret
       id: generate-secret
       shell: bash
@@ -23,9 +21,7 @@ jobs:
     needs: secret-generator
     steps:
     - uses: some/secret-store@27b31702a0e7fc50959f5ad993c78deac1bdfc29
-      with:
-        credentials: ${{ secrets.SECRET_STORE_CREDENTIALS }}
-        instance: ${{ secrets.SECRET_STORE_INSTANCE }}
+   
     - name: use secret
       shell: bash
       run: |
