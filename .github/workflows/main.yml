@@ -1,8 +1,9 @@
 name: Test 78 # Related to https://stackoverflow.com/questions/75720251/setup-environment-to-use-variable-context-when-calling-a-reusable-workflow
 
 on:
-  workflow_call:
-    # Map the workflow outputs to job outputs
+  push:
+    branches:
+      - main  
     inputs:
       project-id:
         required: true
