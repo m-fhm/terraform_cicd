@@ -5,6 +5,7 @@ on:
     branches:
       - main  
 jobs:
+  TESTS:
   - name: generate secret
     id: generate-secret
     shell: bash
