@@ -11,7 +11,7 @@ jobs:
       - name: Set the value
         id: step_one
         run: |
-          test_var = "testdata"
+          echo 'test_var = "testdata"'
           echo "action_state=$test_var" >> "$GITHUB_ENV"
       - name: Use the value
         id: step_two
